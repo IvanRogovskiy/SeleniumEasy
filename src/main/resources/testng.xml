@@ -7,28 +7,28 @@
             <run>
 <!--                <include name="unit"/>-->
 <!--                <include name="web"/>-->
-                <include name="ozon"/>
+                <include name="smoke"/>
 
             </run>
         </groups>
         <classes>
-            <class name="ozon.Test1"/>
+            <class name="seleniumEasyTests.SingleFormTest"/>
         </classes>
     </test>
 
-    <test name="second">
-        <groups>
-            <run>
-                <!--                <include name="unit"/>-->
-                <!--                <include name="web"/>-->
-                <include name="yandex"/>
+<!--    <test name="second">-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                &lt;!&ndash;                <include name="unit"/>&ndash;&gt;-->
+<!--                &lt;!&ndash;                <include name="web"/>&ndash;&gt;-->
+<!--                <include name="yandex"/>-->
 
-            </run>
-        </groups>
-        <classes>
-            <class name="yandex.PictureDownloading"/>
-        </classes>
-    </test>
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <classes>-->
+<!--            <class name="yandex.PictureDownloading"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 <!--    <test name="second">-->
 <!--        <classes>-->

@@ -15,7 +15,7 @@ public class DriverInit {
     public WebDriver driver = null;
     public String current_env = "chrome";
     public static final String webdriversFolder = "C:\\Dih\\tries\\TestNgTries\\src\\main\\resources\\webdrivers\\";
-    public static final String baseUrl = "https://www.ozon.ru";
+    public static final String baseUrl = "https://www.seleniumeasy.com/test/basic-first-form-demo.html";
     public static final String expectedTitle = "OZON — интернет-магазин. Миллионы товаров по выгодным ценам";
     public static final String actualTitle = "";
     public  static final ConfigLoader config = new ConfigLoader();
@@ -65,9 +65,5 @@ public class DriverInit {
     public void closeBrowser() {
         this.driver.quit();
     }
-
-//    public isElementPresent(By by) {
-//
-//    }
 
 }
