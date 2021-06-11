@@ -1,6 +1,5 @@
 package AutoUni.pages.seleniumEasy;
 
-import AutoUni.exceptions.CantGetElementsTextException;
 import AutoUni.helper.CommonHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,6 +20,11 @@ public class BasicFormDemoPage extends BasePage {
 
     private final By singleInputField = By.id("user-message"),
     myMessageField = By.cssSelector("#user-message #display"),
+
+    sum1Field = By.id("sum1"),
+    sum2Field = By.id("sum2"),
+    totalSumField = By.id("displayvalue"),
+
     addBanner = By.cssSelector("#at-cv-lightbox-content"),
     addCloseButton = By.cssSelector("#at-cv-lightbox-close");
 
@@ -48,7 +52,33 @@ public class BasicFormDemoPage extends BasePage {
             return driver.findElement(myMessageField).getText();
     }
 
-    public BasicFormDemoPage getTotal() {
+    public String getTotalSum() {
+        if (super.IsElementVisible(addBanner)) {
+            driver.findElement(addCloseButton).click();
+            webDriverWait.until(ExpectedConditions.invisibilityOfElementLocated(addBanner));
+        }
+        return driver.findElement(totalSumField).getText();
+    }
+
+    public BasicFormDemoPage fillSum1Field(String value) {
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(sum1Field)).clear();
+        driver.findElement(sum1Field).sendKeys(value);
+        return this;
+    }
+
+    public BasicFormDemoPage fillSum2Field(String value) {
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(sum2Field)).clear();
+        driver.findElement(sum2Field).sendKeys(value);
+        return this;
+    }
+
+    public BasicFormDemoPage fillInSumFields(String value1, String value2) {
+        fillSum1Field(value1);
+        fillSum2Field(value2);
+        return this;
+    }
+
+    public BasicFormDemoPage showTotal() {
         actionButton(Action.GET_TOTAL).click();
         return this;
     }

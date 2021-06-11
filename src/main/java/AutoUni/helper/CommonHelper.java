@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 public class CommonHelper {
 
@@ -87,6 +89,11 @@ public class CommonHelper {
 
     public boolean deleteFile(String filePath) {
         return new File(filePath).delete();
-
     }
+
+    public static WebElement pickRandomElementFromDropdown(List<WebElement> dropdownValues) {
+        int randomIndex = new Random().nextInt(dropdownValues.size());
+        return dropdownValues.get(randomIndex);
+    }
+
 }

@@ -12,7 +12,7 @@
             </run>
         </groups>
         <classes>
-            <class name="seleniumEasyTests.SingleFormTest"/>
+            <class name="seleniumEasyTests.BasicFormTests.BasicFormsTest"/>
         </classes>
     </test>
 
