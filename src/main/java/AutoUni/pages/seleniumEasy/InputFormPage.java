@@ -39,6 +39,28 @@ public class InputFormPage extends BasePage {
         return this;
     }
 
+    public boolean isValid(String fieldName) {
+         return driver.findElement(By.xpath("//i[@data-bv-icon-for='" + fieldName + "']"))
+                .getAttribute("class")
+                .contains("glyphicon-ok");
+    }
+
+    public InputFormPage fillInFirstName(String value) {
+        fillInInputField(firstNameFieldLocator, value);
+        return this;
+    }
+
+    public InputFormPage fillInLastName(String value) {
+        fillInInputField(lastNameFieldLocator, value);
+        return this;
+    }
+
+    public InputFormPage fillInEmail(String value) {
+        fillInInputField(emailFieldLocator, value);
+        return this;
+    }
+
+
     public InputFormPage chooseRandomState() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(chooseStateButtonLocator)).click();
         List<WebElement> stateElements = webDriverWait
