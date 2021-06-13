@@ -120,6 +120,14 @@ public class InputFormTest extends DriverInit {
                 .isValid("zip"));
     }
 
+    @Test(groups = {"InputFormTests"}, dataProvider = "websiteTestPositive", dataProviderClass = InputFormDataProvider.class)
+    public void websiteFieldTestPositive(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertTrue(new InputFormPage(driver)
+                .fillInWeb(value)
+                .isValid("website"));
+    }
+
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldValidTest", dataProviderClass = InputFormDataProvider.class)
     public void successfullySendFormWithValidData(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) throws InterruptedException {
         driver.get(baseUrl + "/input-form-demo.html");

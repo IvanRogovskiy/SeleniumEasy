@@ -323,4 +323,19 @@ public class InputFormDataProvider {
         };
     }
 
+    @DataProvider(name = "websiteTestPositive")
+    public static Object[][] createDataWebsite() {
+        return new Object[][]{
+
+                {" "},
+                {RandomStringUtils.randomAlphanumeric(10).toUpperCase()},
+                {RandomStringUtils.randomAlphanumeric(10)},
+                {RandomStringUtils.random(6,"~`!@#$%^&*()’-_+=|\\[]{}\":;'<>,./?")},
+                {RandomStringUtils.random(4 ,"测试 ♡€ ☺")},
+                {RandomStringUtils.randomAlphanumeric(7) + "." + RandomStringUtils.randomAlphanumeric(3)},
+                {RandomStringUtils.randomAlphanumeric(255)}
+
+        };
+    }
+
 }

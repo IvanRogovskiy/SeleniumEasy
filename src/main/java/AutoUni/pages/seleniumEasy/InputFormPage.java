@@ -40,6 +40,9 @@ public class InputFormPage extends BasePage {
     }
 
     public boolean isValid(String fieldName) {
+        if (fieldName.equals("website")) {
+            return !driver.findElement(domainFieldLocator).getAttribute("class").contains("has-error");
+        }
          return driver.findElement(By.xpath("//i[@data-bv-icon-for='" + fieldName + "']"))
                 .getAttribute("class")
                 .contains("glyphicon-ok");
@@ -77,6 +80,11 @@ public class InputFormPage extends BasePage {
 
     public InputFormPage fillInZip(String value) {
         fillInInputField(zipCodeFieldLocator, value);
+        return this;
+    }
+
+    public InputFormPage fillInWeb(String value) {
+        fillInInputField(domainFieldLocator, value);
         return this;
     }
 
