@@ -1,5 +1,6 @@
 package AutoUni.helper;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -94,6 +95,14 @@ public class CommonHelper {
     public static WebElement pickRandomElementFromDropdown(List<WebElement> dropdownValues) {
         int randomIndex = new Random().nextInt(dropdownValues.size());
         return dropdownValues.get(randomIndex);
+    }
+
+    public static String createDescriptionText(int wordsCounts) {
+        StringBuilder description = new StringBuilder();
+        for (int i = 0; i<wordsCounts; i++) {
+            description.append(RandomStringUtils.randomAlphanumeric(new Random().nextInt(10))+ " ");
+        }
+        return description.toString();
     }
 
 }

@@ -1,5 +1,6 @@
 package seleniumEasyTests.InputFormTests;
 
+import AutoUni.helper.CommonHelper;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
@@ -323,7 +324,7 @@ public class InputFormDataProvider {
         };
     }
 
-    @DataProvider(name = "websiteTestPositive")
+    @DataProvider(name = "websiteFieldTest")
     public static Object[][] createDataWebsite() {
         return new Object[][]{
 
@@ -337,5 +338,20 @@ public class InputFormDataProvider {
 
         };
     }
+
+    @DataProvider(name = "descriptionFieldTest")
+    public static Object[][] createDataDescription() {
+        return new Object[][]{
+
+                {" "},
+                {CommonHelper.createDescriptionText(1)},
+                {CommonHelper.createDescriptionText(10)},
+                {CommonHelper.createDescriptionText(5) + RandomStringUtils.random(6,"~`!@#$%^&*()’-_+=|\\[]{}\":;'<>,./?") + RandomStringUtils.random(4 ,"测试 ♡€ ☺")},
+                {CommonHelper.createDescriptionText(255)}
+
+        };
+    }
+
+
 
 }
