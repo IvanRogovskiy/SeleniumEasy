@@ -13,26 +13,65 @@ public class InputFormDataProvider {
                 {RandomStringUtils.randomAlphabetic(10),  //firstName
                         RandomStringUtils.randomAlphabetic(10),  //lastName
                         RandomStringUtils.randomAlphabetic(5) + "@test.com", //email
-                        //TODO Randomizer
-                        "9522422353", //phoneNumber
-                        "Leninskiy street, 15", //address
-                        "Voronezh", //city
-                        "12312", //ZIP-code
-                        "@test", //domain
-                        "qwewqeqecqwdq" //description
-                },
+                        "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(4), //phoneNumber
+                        "475 Lenfant plz sw RM", //address
+                        RandomStringUtils.randomAlphabetic(5), //city
+                        RandomStringUtils.randomNumeric(5), //ZIP-code
+                        RandomStringUtils.randomAlphanumeric(5), //domain
+                        CommonHelper.createDescriptionText(3) //description
 
-//                {       RandomStringUtils.randomAlphanumeric(10),  //firstName
-//                        RandomStringUtils.randomAlphanumeric(10),  //lastName
-//                        RandomStringUtils.randomAlphanumeric(5) + "@test.com", //email
-//                        //TODO Randomizer
-//                        RandomStringUtils.randomAlphanumeric(5), //phoneNumber
-//                        "Leninskiy street, 15", //address
-//                        "Voronezh", //city
-//                        "12312", //ZIP-code
-//                        "@test", //domain
-//                        "qwewqeqecqwdq" //description
-//                },
+                },
+        };
+    }
+
+    @DataProvider(name = "formAllFieldInValidTest")
+    public static Object[][] createDataNegativeForm() {
+        return new Object[][]{
+
+                {RandomStringUtils.randomAlphabetic(1),  //firstName
+                 RandomStringUtils.randomAlphabetic(2),  //lastName
+                 RandomStringUtils.randomAlphabetic(5) + " @test.com", //email
+                 "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(3), //phoneNumber
+                 RandomStringUtils.randomAlphanumeric(7), //address
+                 RandomStringUtils.randomAlphabetic(3), //city
+                 RandomStringUtils.randomNumeric(10), //ZIP-code
+                 " ", //domain
+                 " " //description
+                },
+        };
+    }
+
+    @DataProvider(name = "formOneFieldInValidTest")
+    public static Object[][] createDataOneInvalidForm() {
+        return new Object[][]{
+
+                {RandomStringUtils.randomAlphabetic(10),  //firstName
+                RandomStringUtils.randomAlphabetic(10),  //lastName
+                RandomStringUtils.randomAlphabetic(5) + "@test.com", //email
+                "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(4), //phoneNumber
+                "475 Lenfant plz sw RM", //address
+                RandomStringUtils.randomAlphabetic(5), //city
+                RandomStringUtils.randomNumeric(10), //ZIP-code
+                RandomStringUtils.randomAlphanumeric(5), //domain
+                CommonHelper.createDescriptionText(3) //description
+                },
+        };
+    }
+
+    @DataProvider(name = "formOneFieldValidTest")
+    public static Object[][] createDataOneValidForm() {
+        return new Object[][]{
+
+                {RandomStringUtils.randomAlphabetic(10),  //firstName
+                 RandomStringUtils.randomAlphabetic(2),  //lastName
+                 RandomStringUtils.randomAlphabetic(5) + " @test.com", //email
+                 "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(3), //phoneNumber
+                 RandomStringUtils.randomAlphanumeric(7), //address
+                 RandomStringUtils.randomAlphabetic(3), //city
+                 RandomStringUtils.randomNumeric(10), //ZIP-code
+                 " ", //domain
+                 " " //description
+                },
         };
     }
 

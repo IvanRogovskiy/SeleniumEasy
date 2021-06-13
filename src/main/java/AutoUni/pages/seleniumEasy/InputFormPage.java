@@ -28,9 +28,8 @@ public class InputFormPage extends BasePage {
 
     submitButtonLocator = By.cssSelector(".form-group button[type ='submit']");
 
-
     public InputFormPage(WebDriver driver) {
-        super(driver);
+        super(driver, "/input-form-demo.html") ;
     }
 
     private InputFormPage fillInInputField(By fieldLocator, String value) {
@@ -133,8 +132,12 @@ public class InputFormPage extends BasePage {
         return this;
     }
 
+    public boolean isFormSendingDisabled() {
+        return !driver.findElement(submitButtonLocator).isEnabled();
+    }
+
     public InputFormPage sendForm() {
-        if (!driver.findElement(submitButtonLocator).isEnabled()) {
+        if (isFormSendingDisabled()) {
             throw new ElementNotInteractableException("Button is disabled");
         }
         driver.findElement(submitButtonLocator).click();

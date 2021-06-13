@@ -1,146 +1,204 @@
 package seleniumEasyTests.InputFormTests;
 
 import AutoUni.DriverInit;
+import AutoUni.data.InputFormFieldName;
 import AutoUni.pages.seleniumEasy.InputFormPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class InputFormTest extends DriverInit {
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "firsLastNamesTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "firsLastNamesTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void firstNameFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInFirstName(value)
-                .isValid("first_name")); //TODO Create enum
+                .isValid(InputFormFieldName.FIRST_NAME.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "firsLastNamesTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "firsLastNamesTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void firstNameFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInFirstName(value)
-                .isValid("first_name"));
+                .isValid(InputFormFieldName.FIRST_NAME.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "firsLastNamesTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "firsLastNamesTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void lastNameFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInLastName(value)
-                .isValid("last_name")); //TODO Create enum
+                .isValid(InputFormFieldName.LAST_NAME.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "firsLastNamesTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "firsLastNamesTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void lastNameFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInLastName(value)
-                .isValid("last_name"));
+                .isValid(InputFormFieldName.LAST_NAME.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "emailTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "emailTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void emailFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInEmail(value)
-                .isValid("email")); //TODO Create enum
+                .isValid(InputFormFieldName.E_MAIL.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "emailTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "emailTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void emailFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        System.out.println(value);
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInEmail(value)
-                .isValid("email")); //TODO Create enum
+                .isValid(InputFormFieldName.E_MAIL.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "phoneTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "phoneTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void phoneFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInPhone(value)
-                .isValid("phone"));
+                .isValid(InputFormFieldName.PHONE.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "phoneTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "phoneTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void phoneFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInPhone(value)
-                .isValid("phone"));
+                .isValid(InputFormFieldName.PHONE.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "addressTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "addressTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void addressFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInAddress(value)
-                .isValid("address"));
+                .isValid(InputFormFieldName.ADDRESS.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "addressTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "addressTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void addressFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInAddress(value)
-                .isValid("address"));
+                .isValid(InputFormFieldName.ADDRESS.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "cityTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "cityTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void cityFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInCity(value)
-                .isValid("city"));
+                .isValid(InputFormFieldName.CITY.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "cityTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "cityTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void cityFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInCity(value)
-                .isValid("address"));
+                .isValid(InputFormFieldName.CITY.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "zipTestPositive", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "zipTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void zipFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInZip(value)
-                .isValid("zip"));
+                .isValid(InputFormFieldName.ZIP_CODE.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "zipTestNegative", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "zipTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void zipFieldTestNegative(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertFalse(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertFalse(inputFormPage
                 .fillInZip(value)
-                .isValid("zip"));
+                .isValid(InputFormFieldName.ZIP_CODE.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "websiteFieldTest", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "websiteFieldTest", dataProviderClass = InputFormDataProvider.class)
     public void websiteFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInWeb(value)
-                .isValid("website"));
+                .isValid(InputFormFieldName.DOMAIN.getFieldName()));
     }
 
-    @Test(groups = {"InputFormTests"}, dataProvider = "descriptionFieldTest", dataProviderClass = InputFormDataProvider.class)
+    @Test(groups = {"InputFormFieldTests"}, dataProvider = "descriptionFieldTest", dataProviderClass = InputFormDataProvider.class)
     public void descriptionFieldTestPositive(String value) {
-        driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
                 .fillInWeb(value)
-                .isValid("description"));
+                .isValid(InputFormFieldName.DESCRIPTION.getFieldName()));
     }
+
+    //Whole form tests
 
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldValidTest", dataProviderClass = InputFormDataProvider.class)
     public void successfullySendFormWithValidData(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) throws InterruptedException {
-        driver.get(baseUrl + "/input-form-demo.html");
-        new InputFormPage(driver)
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        inputFormPage
                 .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
                 .sendForm();
     }
+
+    @Test(groups = {"InputFormTests"})
+    public void failToSendFormWithAllBlankFields() {
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
+                .sendForm()
+                .isFormSendingDisabled());
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldInValidTest", dataProviderClass = InputFormDataProvider.class)
+    public void failToSendFormWithAllFieldsWithAllInvalidValues(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) {
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .sendForm()
+                .isFormSendingDisabled());
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "formOneFieldInValidTest", dataProviderClass = InputFormDataProvider.class)
+    public void failToSendFormWithOneInvalidValue(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) {
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .sendForm()
+                .isFormSendingDisabled());
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "formOneFieldValidTest", dataProviderClass = InputFormDataProvider.class)
+    public void failToSendFormWithOneValidValue(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) {
+        InputFormPage inputFormPage = new InputFormPage(driver);
+        inputFormPage.open(baseUrl);
+        Assert.assertTrue(inputFormPage
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .isFormSendingDisabled());
+    }
+
 }

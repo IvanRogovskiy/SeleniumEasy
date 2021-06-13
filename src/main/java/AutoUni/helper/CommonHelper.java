@@ -100,7 +100,7 @@ public class CommonHelper {
     public static String createDescriptionText(int wordsCounts) {
         StringBuilder description = new StringBuilder();
         for (int i = 0; i<wordsCounts; i++) {
-            description.append(RandomStringUtils.randomAlphanumeric(new Random().nextInt(10))+ " ");
+            description.append(RandomStringUtils.randomAlphanumeric(new Random().nextInt(10))).append(" ");
         }
         return description.toString();
     }

@@ -3,20 +3,24 @@ package AutoUni.pages.seleniumEasy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@SuppressWarnings("unchecked")
 public class BasePage {
 
     WebDriver driver;
     WebDriverWait webDriverWait;
+    String url;
 
-    private final By addBanner = By.cssSelector("#at-cv-lightbox-content"),
-            addCloseButton = By.cssSelector("#at-cv-lightbox-close");
-
-    public BasePage(WebDriver driver) {
+    public BasePage(WebDriver driver, String url) {
         this.driver = driver;
         this.webDriverWait = new WebDriverWait(driver, 15);
+        this.url = url;
+    }
+
+     public <T extends BasePage> T open(String baseUrl) {
+        driver.get(baseUrl + url);
+        return (T) this;
     }
 
     public boolean IsElementPresent(By by){

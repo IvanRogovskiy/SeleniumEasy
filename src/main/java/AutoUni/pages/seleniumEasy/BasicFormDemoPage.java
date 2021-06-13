@@ -10,7 +10,7 @@ import org.testng.Assert;
 public class BasicFormDemoPage extends BasePage {
 
     public BasicFormDemoPage(WebDriver driver) {
-        super(driver);
+        super(driver,"/basic-first-form-demo.html");
     }
 
     public BasicFormDemoPage isOpened() {
