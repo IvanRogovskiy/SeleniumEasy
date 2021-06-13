@@ -204,4 +204,44 @@ public class InputFormDataProvider {
         };
     }
 
+    @DataProvider(name = "addressTestPositive")
+    public static Object[][] createDataAddress() {
+        final String randomAddress = RandomStringUtils.randomNumeric(4) + RandomStringUtils.randomAlphabetic(7) + RandomStringUtils.randomAlphabetic(3);
+        return new Object[][]{
+
+                //8 symbols
+                {RandomStringUtils.randomAlphanumeric(8)},
+
+                //8 numbers
+                {RandomStringUtils.randomNumeric(8)},
+
+                {"address"},
+
+                //very long text
+                {RandomStringUtils.randomAlphanumeric(255)},
+
+                {randomAddress},
+
+                //USA address (not random)
+                {"475 Lenfant plz sw RM"},
+
+                //with Unicode characters
+                {"475 Lenfant☺ plz sw RM 测试"},
+
+                //address + symbols
+                {randomAddress + "~`!@#$%^&*()’-_+=|\\[]{}\":;'<>,./?"}
+
+        };
+    }
+
+    @DataProvider(name = "addressTestNegative")
+    public static Object[][] createDataAddressNegative() {
+        return new Object[][]{
+
+                {" "},
+                {RandomStringUtils.randomAlphanumeric(7)},
+
+        };
+    }
+
 }

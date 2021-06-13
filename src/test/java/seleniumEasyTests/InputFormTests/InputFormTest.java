@@ -72,6 +72,22 @@ public class InputFormTest extends DriverInit {
                 .isValid("phone"));
     }
 
+    @Test(groups = {"InputFormTests"}, dataProvider = "addressTestPositive", dataProviderClass = InputFormDataProvider.class)
+    public void addressFieldTestPositive(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertTrue(new InputFormPage(driver)
+                .fillInAddress(value)
+                .isValid("address"));
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "addressTestNegative", dataProviderClass = InputFormDataProvider.class)
+    public void addressFieldTestNegative(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertTrue(new InputFormPage(driver)
+                .fillInAddress(value)
+                .isValid("address"));
+    }
+
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldValidTest", dataProviderClass = InputFormDataProvider.class)
     public void successfullySendFormWithValidData(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) throws InterruptedException {
         driver.get(baseUrl + "/input-form-demo.html");

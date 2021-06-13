@@ -65,6 +65,11 @@ public class InputFormPage extends BasePage {
         return this;
     }
 
+    public InputFormPage fillInAddress(String value) {
+        fillInInputField(addressFieldLocator, value);
+        return this;
+    }
+
     public InputFormPage chooseRandomState() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(chooseStateButtonLocator)).click();
         List<WebElement> stateElements = webDriverWait
