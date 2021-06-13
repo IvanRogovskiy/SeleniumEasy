@@ -41,7 +41,6 @@ public class InputFormTest extends DriverInit {
 
     @Test(groups = {"InputFormTests"}, dataProvider = "emailTestPositive", dataProviderClass = InputFormDataProvider.class)
     public void emailFieldTestPositive(String value) {
-        System.out.println(value);
         driver.get(baseUrl + "/input-form-demo.html");
         Assert.assertTrue(new InputFormPage(driver)
                 .fillInEmail(value)
@@ -55,6 +54,22 @@ public class InputFormTest extends DriverInit {
         Assert.assertFalse(new InputFormPage(driver)
                 .fillInEmail(value)
                 .isValid("email")); //TODO Create enum
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "phoneTestPositive", dataProviderClass = InputFormDataProvider.class)
+    public void phoneFieldTestPositive(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertTrue(new InputFormPage(driver)
+                .fillInPhone(value)
+                .isValid("phone"));
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "phoneTestNegative", dataProviderClass = InputFormDataProvider.class)
+    public void phoneFieldTestNegative(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertFalse(new InputFormPage(driver)
+                .fillInPhone(value)
+                .isValid("phone"));
     }
 
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldValidTest", dataProviderClass = InputFormDataProvider.class)

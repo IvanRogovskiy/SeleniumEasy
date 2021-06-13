@@ -147,4 +147,61 @@ public class InputFormDataProvider {
 
     }
 
+    @DataProvider(name = "phoneTestPositive")
+    public static Object[][] createDataPhone() {
+        final String validRandomNumber = "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(4);
+        return new Object[][]{
+
+                //10 numbers (despite the placeholder shows format with ")" just numbers are applicable as well for the form
+                {RandomStringUtils.randomNumeric(10)},
+
+                //10 with "(" and ")"
+                {validRandomNumber},
+
+                //placeholder
+                {"(845)555-1212"},
+
+                //10 symbols with backspaces
+                {RandomStringUtils.randomNumeric(3) + " " + RandomStringUtils.randomNumeric(3) + " " + RandomStringUtils.randomNumeric(4)},
+
+                //10 symbols with "-"
+                {RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(4)},
+
+                //random number + backspace
+                {validRandomNumber + "  "},
+
+                //backspace + random number
+                {"  " + validRandomNumber}
+
+        };
+    }
+
+    @DataProvider(name = "phoneTestNegative")
+    public static Object[][] createDataPhoneNegative() {
+        final String validRandomNumber = "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(4);
+        return new Object[][]{
+
+                {" "},
+
+                //less than 10 numbers (9)
+                {"(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(3)},
+
+                //more than 10 numbers (11)
+                {"(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(5)},
+
+                //letters instead of numbers
+                {"(" + RandomStringUtils.randomAlphabetic(3) +")" + RandomStringUtils.randomAlphabetic(3) + "-" + RandomStringUtils.randomAlphabetic(4)},
+
+                //9 numbers + 1 symbol
+                {"(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(3) + RandomStringUtils.randomAlphabetic(1)},
+
+                //1 number + 9 symbols
+                {RandomStringUtils.randomAlphabetic(1) + "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(3)},
+
+                //numbers + ascii symbols
+                {"(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomAscii(3) + "-" + RandomStringUtils.randomNumeric(2) + RandomStringUtils.randomAscii(2)},
+
+        };
+    }
+
 }

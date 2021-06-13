@@ -60,6 +60,10 @@ public class InputFormPage extends BasePage {
         return this;
     }
 
+    public InputFormPage fillInPhone(String value) {
+        fillInInputField(phoneFieldLocator, value);
+        return this;
+    }
 
     public InputFormPage chooseRandomState() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(chooseStateButtonLocator)).click();
