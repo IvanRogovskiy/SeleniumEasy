@@ -75,6 +75,11 @@ public class InputFormPage extends BasePage {
         return this;
     }
 
+    public InputFormPage fillInZip(String value) {
+        fillInInputField(zipCodeFieldLocator, value);
+        return this;
+    }
+
     public InputFormPage chooseRandomState() {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(chooseStateButtonLocator)).click();
         List<WebElement> stateElements = webDriverWait

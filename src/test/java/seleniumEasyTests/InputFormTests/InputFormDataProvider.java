@@ -289,4 +289,38 @@ public class InputFormDataProvider {
         };
     }
 
+    @DataProvider(name = "zipTestPositive")
+    public static Object[][] createDataZip() {
+        return new Object[][]{
+
+                {RandomStringUtils.randomNumeric(4)},
+                {RandomStringUtils.randomNumeric(5)},
+                {RandomStringUtils.randomNumeric(5) + "-" + RandomStringUtils.randomNumeric(4)},
+                {RandomStringUtils.randomNumeric(8)},
+                {RandomStringUtils.randomNumeric(9)}
+
+        };
+    }
+
+    @DataProvider(name = "zipTestNegative")
+    public static Object[][] createDataZipNegative() {
+        return new Object[][]{
+
+                {" "},
+                {" " + RandomStringUtils.randomNumeric(4)},
+                {RandomStringUtils.randomNumeric(5) + "  " + RandomStringUtils.randomNumeric(3)},
+                {RandomStringUtils.randomNumeric(8) + " "},
+                {RandomStringUtils.randomNumeric(3)},
+                {RandomStringUtils.randomNumeric(6)},
+                {RandomStringUtils.randomNumeric(10)},
+                {RandomStringUtils.randomAlphabetic(4)},
+                {RandomStringUtils.randomAlphabetic(5) + RandomStringUtils.randomAlphabetic(4)},
+                {RandomStringUtils.randomNumeric(4) + "-" + RandomStringUtils.randomNumeric(5)},
+                { "-" + RandomStringUtils.randomNumeric(4) + RandomStringUtils.randomNumeric(4)},
+                {RandomStringUtils.randomNumeric(5) + RandomStringUtils.random(1 ,"~`!@#$%^&*()’-_+=|\\[]{}\":;'<>,./?") + RandomStringUtils.randomNumeric(4)},
+                {RandomStringUtils.randomNumeric(5) + RandomStringUtils.random(1 ,"测试 ♡€ ☺") + RandomStringUtils.randomNumeric(4)},
+                {RandomStringUtils.randomNumeric(5) + " " + RandomStringUtils.randomNumeric(4)},
+        };
+    }
+
 }

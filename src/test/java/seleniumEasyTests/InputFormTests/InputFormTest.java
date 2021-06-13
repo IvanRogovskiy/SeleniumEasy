@@ -104,6 +104,22 @@ public class InputFormTest extends DriverInit {
                 .isValid("address"));
     }
 
+    @Test(groups = {"InputFormTests"}, dataProvider = "zipTestPositive", dataProviderClass = InputFormDataProvider.class)
+    public void zipFieldTestPositive(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertTrue(new InputFormPage(driver)
+                .fillInZip(value)
+                .isValid("zip"));
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "zipTestNegative", dataProviderClass = InputFormDataProvider.class)
+    public void zipFieldTestNegative(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertFalse(new InputFormPage(driver)
+                .fillInZip(value)
+                .isValid("zip"));
+    }
+
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldValidTest", dataProviderClass = InputFormDataProvider.class)
     public void successfullySendFormWithValidData(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) throws InterruptedException {
         driver.get(baseUrl + "/input-form-demo.html");
