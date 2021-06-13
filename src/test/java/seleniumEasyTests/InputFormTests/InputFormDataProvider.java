@@ -244,4 +244,49 @@ public class InputFormDataProvider {
         };
     }
 
+    @DataProvider(name = "cityTestPositive")
+    public static Object[][] createDataCity() {
+        return new Object[][]{
+
+                //4 symbols
+                {RandomStringUtils.randomAlphabetic(4)},
+
+                //5 symbols
+                {RandomStringUtils.randomAlphabetic(5)},
+
+                //255 letters
+                {RandomStringUtils.randomAlphabetic(255)},
+
+                //placeholder
+                {"city"},
+
+                //with space
+                {RandomStringUtils.randomAlphabetic(5) + " " + RandomStringUtils.randomAlphabetic(3)},
+
+                //with 3 words
+                {RandomStringUtils.randomAlphabetic(4) + " " + RandomStringUtils.randomAlphabetic(3) + " " + RandomStringUtils.randomAlphabetic(5)},
+
+                ///with "-"
+                {RandomStringUtils.randomAlphabetic(4) + "-" + RandomStringUtils.randomAlphabetic(3) + "-" + RandomStringUtils.randomAlphabetic(5)},
+
+                //with Unicode symbols
+                {RandomStringUtils.randomAlphabetic(3) + RandomStringUtils.random(3 ,"测试 ♡€ ☺")},
+
+                //with special chars
+                {RandomStringUtils.randomAlphabetic(4) + RandomStringUtils.random(3 ,"~`!@#$%^&*()’-_+=|\\[]{}\":;'<>,./?")}
+
+        };
+    }
+
+    @DataProvider(name = "cityTestNegative")
+    public static Object[][] createDataCityNegative() {
+        return new Object[][]{
+
+                {" "},
+                {RandomStringUtils.randomAlphabetic(3)},
+                {RandomStringUtils.randomNumeric(3)},
+
+        };
+    }
+
 }

@@ -83,8 +83,24 @@ public class InputFormTest extends DriverInit {
     @Test(groups = {"InputFormTests"}, dataProvider = "addressTestNegative", dataProviderClass = InputFormDataProvider.class)
     public void addressFieldTestNegative(String value) {
         driver.get(baseUrl + "/input-form-demo.html");
-        Assert.assertTrue(new InputFormPage(driver)
+        Assert.assertFalse(new InputFormPage(driver)
                 .fillInAddress(value)
+                .isValid("address"));
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "cityTestPositive", dataProviderClass = InputFormDataProvider.class)
+    public void cityFieldTestPositive(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertTrue(new InputFormPage(driver)
+                .fillInCity(value)
+                .isValid("city"));
+    }
+
+    @Test(groups = {"InputFormTests"}, dataProvider = "cityTestNegative", dataProviderClass = InputFormDataProvider.class)
+    public void cityFieldTestNegative(String value) {
+        driver.get(baseUrl + "/input-form-demo.html");
+        Assert.assertFalse(new InputFormPage(driver)
+                .fillInCity(value)
                 .isValid("address"));
     }
 
