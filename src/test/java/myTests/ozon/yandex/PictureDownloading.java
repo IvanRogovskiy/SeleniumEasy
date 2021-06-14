@@ -1,4 +1,4 @@
-package yandex;
+package myTests.ozon.yandex;
 
 import AutoUni.DriverInit;
 import AutoUni.helper.CommonHelper;
@@ -13,13 +13,13 @@ import java.nio.file.Paths;
 
 public class PictureDownloading extends DriverInit {
 
-    @Test(groups = {"yandex"})
+    @Test(groups = {"myTests.ozon.yandex"})
     public void openPage() {
         driver.get(config.getProperty("baseUrl"));
         new CommonHelper(driver).isPageLoaded();
     }
 
-    @Test(groups = {"yandex"})
+    @Test(groups = {"myTests.ozon.yandex"})
     public void searchByImage() {
         openPage();
         MainSearchPage mainSearchPage = new MainSearchPage(driver);
@@ -30,7 +30,7 @@ public class PictureDownloading extends DriverInit {
 
     }
 
-    @Test(groups = {"yandex"})
+    @Test(groups = {"myTests.ozon.yandex"})
     public void downloadImage() {
         searchByImage();
         String downloadedImageName = "downloadedImage2";

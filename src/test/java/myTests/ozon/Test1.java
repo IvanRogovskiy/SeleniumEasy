@@ -1,4 +1,4 @@
-package ozon;
+package myTests.ozon;
 
 import AutoUni.DriverInit;
 import AutoUni.pages.FoundItemsPage;

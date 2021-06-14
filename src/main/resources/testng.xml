@@ -1,38 +1,24 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" parallel="classes" thread-count="2" >
-
-    <test name="first">
+    <test name="basicForm">
         <groups>
             <run>
-<!--                <include name="unit"/>-->
-<!--                <include name="web"/>-->
                 <include name="smoke"/>
-
             </run>
         </groups>
         <classes>
             <class name="seleniumEasyTests.BasicFormTests.BasicFormsTest"/>
         </classes>
     </test>
-
-<!--    <test name="second">-->
-<!--        <groups>-->
-<!--            <run>-->
-<!--                &lt;!&ndash;                <include name="unit"/>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <include name="web"/>&ndash;&gt;-->
-<!--                <include name="yandex"/>-->
-
-<!--            </run>-->
-<!--        </groups>-->
-<!--        <classes>-->
-<!--            <class name="yandex.PictureDownloading"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-<!--    <test name="second">-->
-<!--        <classes>-->
-<!--            <class name="AutoUni.DriverInit"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="inputForm">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="seleniumEasyTests.InputFormTests.InputFormTest"/>
+        </classes>
+    </test>
 </suite>
