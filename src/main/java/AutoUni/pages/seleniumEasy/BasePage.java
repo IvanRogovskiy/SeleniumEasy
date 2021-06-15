@@ -1,9 +1,11 @@
 package AutoUni.pages.seleniumEasy;
 
+import AutoUni.helper.CommonHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 @SuppressWarnings("unchecked")
 public abstract class BasePage {
@@ -18,9 +20,14 @@ public abstract class BasePage {
         this.url = url;
     }
 
-     public <T extends BasePage> T open(String baseUrl) {
+     public BasePage open(String baseUrl) {
         driver.get(baseUrl + url);
-        return (T) this;
+        return this;
+    }
+
+    public BasePage isOpened() {
+        Assert.assertTrue(new CommonHelper(driver).isPageLoaded());
+        return this;
     }
 
     public boolean IsElementPresent(By by){

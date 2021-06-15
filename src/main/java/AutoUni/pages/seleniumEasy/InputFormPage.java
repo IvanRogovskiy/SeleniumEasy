@@ -32,6 +32,16 @@ public class InputFormPage extends BasePage {
         super(driver, "/input-form-demo.html") ;
     }
 
+    @Override
+    public InputFormPage open(String baseUrl) {
+        return (InputFormPage)super.open(baseUrl);
+    }
+
+    @Override
+    public InputFormPage isOpened() {
+        return (InputFormPage)super.isOpened();
+    }
+
     private InputFormPage fillInInputField(By fieldLocator, String value) {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(fieldLocator)).clear();
         driver.findElement(fieldLocator).sendKeys(value);

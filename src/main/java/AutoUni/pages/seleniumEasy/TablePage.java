@@ -1,12 +1,13 @@
 package AutoUni.pages.seleniumEasy;
 
+import AutoUni.data.SortingOrder;
+import AutoUni.data.TableColumn;
 import AutoUni.helper.CommonHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
@@ -16,14 +17,18 @@ public class TablePage extends BasePage {
     private final By searchFieldLocator = By.cssSelector("#example_filter [type='search']"),
     foundItemsLocator = By.xpath("//table//tr[contains(@role, 'row')]");
 
-
     public TablePage(WebDriver driver) {
         super(driver, "/table-sort-search-demo.html");
     }
 
+    @Override
+    public TablePage open(String baseUrl) {
+        return (TablePage)super.open(baseUrl);
+    }
+
+    @Override
     public TablePage isOpened() {
-        Assert.assertTrue(new CommonHelper(driver).isPageLoaded());
-        return this;
+        return (TablePage)super.isOpened();
     }
 
     public TablePage searchItems(String query) {
@@ -52,6 +57,20 @@ public class TablePage extends BasePage {
             }
         });
         return result.get();
+    }
+
+    public TablePage filterBy(TableColumn tableColumn, SortingOrder sortingOrder) {
+        WebElement columnTitle = getColumnTitle(tableColumn);
+        columnTitle.click();
+        if (!columnTitle.getAttribute("aria-sort").equals(sortingOrder.getAttrValue())) {
+            columnTitle.click();
+        }
+        return this;
+    }
+
+    private WebElement getColumnTitle(TableColumn tableColumn) {
+        return webDriverWait
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table//tr/th[contains(text(),'" + tableColumn.getColumnTitle() + "')]")));
     }
 
 }

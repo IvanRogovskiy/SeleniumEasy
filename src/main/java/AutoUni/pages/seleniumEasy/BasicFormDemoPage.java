@@ -9,15 +9,6 @@ import org.testng.Assert;
 
 public class BasicFormDemoPage extends BasePage {
 
-    public BasicFormDemoPage(WebDriver driver) {
-        super(driver,"/basic-first-form-demo.html");
-    }
-
-    public BasicFormDemoPage isOpened() {
-        Assert.assertTrue(new CommonHelper(driver).isPageLoaded());
-        return this;
-    }
-
     private final By singleInputField = By.id("user-message"),
     myMessageField = By.cssSelector("#user-message #display"),
 
@@ -27,6 +18,20 @@ public class BasicFormDemoPage extends BasePage {
 
     addBanner = By.cssSelector("#at-cv-lightbox-content"),
     addCloseButton = By.cssSelector("#at-cv-lightbox-close");
+
+    public BasicFormDemoPage(WebDriver driver) {
+        super(driver,"/basic-first-form-demo.html");
+    }
+
+    @Override
+    public BasicFormDemoPage open(String baseUrl) {
+        return (BasicFormDemoPage)super.open(baseUrl);
+    }
+
+    @Override
+    public BasicFormDemoPage isOpened() {
+        return (BasicFormDemoPage)super.isOpened();
+    }
 
     public BasicFormDemoPage fillInField(String inputValue) {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(singleInputField)).clear();
