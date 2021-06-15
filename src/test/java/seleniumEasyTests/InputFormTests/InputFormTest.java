@@ -155,11 +155,11 @@ public class InputFormTest extends DriverInit {
     //Whole form tests
 
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldValidTest", dataProviderClass = InputFormDataProvider.class)
-    public void successfullySendFormWithValidData(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) throws InterruptedException {
+    public void successfullySendFormWithValidData(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, boolean isHostingAvailable, String commentField) {
         InputFormPage inputFormPage = new InputFormPage(driver);
         inputFormPage.open(baseUrl).isOpened();
         inputFormPage
-                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, isHostingAvailable, commentField)
                 .sendForm();
     }
 
@@ -173,31 +173,31 @@ public class InputFormTest extends DriverInit {
     }
 
     @Test(groups = {"InputFormTests"}, dataProvider = "formAllFieldInValidTest", dataProviderClass = InputFormDataProvider.class)
-    public void failToSendFormWithAllFieldsWithAllInvalidValues(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) {
+    public void failToSendFormWithAllFieldsWithAllInvalidValues(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, boolean isHostingAvailable, String commentField) {
         InputFormPage inputFormPage = new InputFormPage(driver);
         inputFormPage.open(baseUrl).isOpened();
         Assert.assertTrue(inputFormPage
-                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, isHostingAvailable, commentField)
                 .sendForm()
                 .isFormSendingDisabled());
     }
 
     @Test(groups = {"InputFormTests"}, dataProvider = "formOneFieldInValidTest", dataProviderClass = InputFormDataProvider.class)
-    public void failToSendFormWithOneInvalidValue(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) {
+    public void failToSendFormWithOneInvalidValue(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, boolean isHostingAvailable, String commentField) {
         InputFormPage inputFormPage = new InputFormPage(driver);
         inputFormPage.open(baseUrl).isOpened();
         Assert.assertTrue(inputFormPage
-                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, isHostingAvailable, commentField)
                 .sendForm()
                 .isFormSendingDisabled());
     }
 
     @Test(groups = {"InputFormTests"}, dataProvider = "formOneFieldValidTest", dataProviderClass = InputFormDataProvider.class)
-    public void failToSendFormWithOneValidValue(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, String commentField) {
+    public void failToSendFormWithOneValidValue(String firstName, String lastName, String email, String phone, String address, String city, String zipcode, String domain, boolean isHostingAvailable, String commentField) {
         InputFormPage inputFormPage = new InputFormPage(driver);
         inputFormPage.open(baseUrl).isOpened();
         Assert.assertTrue(inputFormPage
-                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, commentField)
+                .fillInTheForm(firstName, lastName, email, phone, address, city, zipcode, domain, isHostingAvailable, commentField)
                 .isFormSendingDisabled());
     }
 

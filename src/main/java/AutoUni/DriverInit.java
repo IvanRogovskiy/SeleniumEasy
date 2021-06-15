@@ -1,7 +1,5 @@
 package AutoUni;
 
-import AutoUni.config.ConfigLoader;
-import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -16,10 +14,6 @@ public class DriverInit {
     public String current_env = "chrome";
     public static final String webdriversFolder = "C:\\Dih\\tries\\TestNgTries\\src\\main\\resources\\webdrivers\\";
     public static final String baseUrl = "https://www.seleniumeasy.com/test";
-    public static final String expectedTitle = "OZON — интернет-магазин. Миллионы товаров по выгодным ценам";
-    public static final String actualTitle = "";
-    public  static final ConfigLoader config = new ConfigLoader();
-
 
     @BeforeTest
     public void initBrowser() {
@@ -57,7 +51,6 @@ public class DriverInit {
                 System.out.println("DRIVER IS NULL");
                 break;
         }
-
 
     }
 

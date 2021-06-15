@@ -50,7 +50,11 @@ public class TableDataProvider {
                 {"Reg", TableColumn.OFFICE, SortingOrder.DESC},
                 {"Reg", TableColumn.OFFICE, SortingOrder.ASC},
                 {"Av", TableColumn.POSITION, SortingOrder.ASC},
-                {"Av", TableColumn.POSITION, SortingOrder.DESC}
+                {"Av", TableColumn.POSITION, SortingOrder.DESC},
+                {"Re", TableColumn.AGE, SortingOrder.ASC},
+                {"Re", TableColumn.AGE, SortingOrder.DESC},
+                {"Re", TableColumn.SALARY, SortingOrder.ASC},
+                {"Re", TableColumn.SALARY, SortingOrder.DESC},
         };
     }
 

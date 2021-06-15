@@ -4,11 +4,25 @@ import AutoUni.helper.CommonHelper;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.DataProvider;
 
+import java.util.Random;
+
 public class InputFormDataProvider {
 
     @DataProvider(name = "formAllFieldValidTest")
     public static Object[][] createDataPositiveForm() {
         return new Object[][]{
+
+                {RandomStringUtils.randomAlphabetic(10),  //firstName
+                RandomStringUtils.randomAlphabetic(10),  //lastName
+                RandomStringUtils.randomAlphabetic(5) + "@test.com", //email
+                "(" + RandomStringUtils.randomNumeric(3) +")" + RandomStringUtils.randomNumeric(3) + "-" + RandomStringUtils.randomNumeric(4), //phoneNumber
+                "475 Lenfant plz sw RM", //address
+                RandomStringUtils.randomAlphabetic(5), //city
+                RandomStringUtils.randomNumeric(5), //ZIP-code
+                RandomStringUtils.randomAlphanumeric(5), //domain
+                true,
+                CommonHelper.createDescriptionText(3) //description
+                },
 
                 {RandomStringUtils.randomAlphabetic(10),  //firstName
                         RandomStringUtils.randomAlphabetic(10),  //lastName
@@ -18,8 +32,8 @@ public class InputFormDataProvider {
                         RandomStringUtils.randomAlphabetic(5), //city
                         RandomStringUtils.randomNumeric(5), //ZIP-code
                         RandomStringUtils.randomAlphanumeric(5), //domain
+                        false,
                         CommonHelper.createDescriptionText(3) //description
-
                 },
         };
     }
@@ -36,6 +50,7 @@ public class InputFormDataProvider {
                  RandomStringUtils.randomAlphabetic(3), //city
                  RandomStringUtils.randomNumeric(10), //ZIP-code
                  " ", //domain
+                 true, //hosting availability
                  " " //description
                 },
         };
@@ -53,6 +68,7 @@ public class InputFormDataProvider {
                 RandomStringUtils.randomAlphabetic(5), //city
                 RandomStringUtils.randomNumeric(10), //ZIP-code
                 RandomStringUtils.randomAlphanumeric(5), //domain
+                new Random().nextBoolean(),
                 CommonHelper.createDescriptionText(3) //description
                 },
         };
@@ -69,7 +85,8 @@ public class InputFormDataProvider {
                  RandomStringUtils.randomAlphanumeric(7), //address
                  RandomStringUtils.randomAlphabetic(3), //city
                  RandomStringUtils.randomNumeric(10), //ZIP-code
-                 " ", //domain
+                 " ",
+                 new Random().nextBoolean(),//domain
                  " " //description
                 },
         };

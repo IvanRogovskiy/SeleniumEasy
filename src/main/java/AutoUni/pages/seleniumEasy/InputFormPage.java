@@ -127,6 +127,7 @@ public class InputFormPage extends BasePage {
                                 String city,
                                 String zipcode,
                                 String domain,
+                                boolean isHostingAvailable,
                                 String commentField) {
         fillInInputField(firstNameFieldLocator, firstName);
         fillInInputField(lastNameFieldLocator, lastName);
@@ -137,7 +138,7 @@ public class InputFormPage extends BasePage {
         chooseRandomState();
         fillInInputField(zipCodeFieldLocator, zipcode);
         fillInInputField(domainFieldLocator, domain);
-        chooseIsHostingAvailable(true);
+        chooseIsHostingAvailable(isHostingAvailable);
         fillInInputField(commentFieldLocator, commentField);
         return this;
     }
