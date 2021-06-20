@@ -54,7 +54,6 @@ public class CommonHelper {
             }
         } while (!pageWasLoaded && this.isTimeout(startTime, TIMEOUT_FOR_PAGE_LOADED));
         return  pageWasLoaded;
-
     }
 
     public void uploadFile(By by, String filePath) {

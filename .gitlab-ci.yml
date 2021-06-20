@@ -1,0 +1,15 @@
+image: markhobson/maven-chrome:latest
+
+stages:
+  - run-tests
+
+sanityrun-dev:
+  stage: run-tests
+  artifacts:
+    paths:
+      - /builds/ivanrg/SeleniumEasy/target/surefire-reports/*
+    when: always
+  script:
+    - mvn test
+  tags:
+    - simple_run
